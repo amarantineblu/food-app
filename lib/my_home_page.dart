@@ -1,8 +1,13 @@
 // import 'dart:convert';
 
+// ignore_for_file: unused_import
+
+import 'package:app_1/pages/login.dart';
 import 'package:app_1/util/carousel_item.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:app_1/util/consts.dart';
+import 'package:app_1/pages/register_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -20,14 +25,14 @@ class _MyHomePageState extends State<MyHomePage> {
     },
 
     {
-      'carouselImage': 'pexels-elevate-1267320.jpg',
-      'carouselBigText': 'Share Your Recipes',
+      'carouselImage': 'pexels-yente-van-eynde-1263034-2403391.jpg',
+      'carouselBigText': 'Learn To Cook',
       'carouselParagraph': ' Lorem Ipsum d ul liu kodioikodi kmnoiolkolio ',
     },
 
     {
       'carouselImage': 'pexels-juanpphotoandvideo-1587830.jpg',
-      'carouselBigText': 'Share Your Recipes',
+      'carouselBigText': 'Become a Master Chef',
       'carouselParagraph': ' Lorem Ipsum d ul liu kodioikodi kmnoiolkolio ',
     },
   ];
@@ -63,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(
                     decoration: TextDecoration.none,
                     color: Colors.white,
+                    fontFamily: poppins,
                   ),
                 ),
               ),
@@ -72,7 +78,11 @@ class _MyHomePageState extends State<MyHomePage> {
           final carouselItems = snapshot.data!;
           return CarouselSlider.builder(
             itemCount: carouselItems.length,
+            
             itemBuilder: (context, index, realIndex) {
+              if (index > carouselItems.length - 1) {
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen() ));
+              }
               return CarouselItem(
                 carouselBigText: carouselItems[index]['carouselBigText'],
                 carouselImage: carouselItems[index]['carouselImage'],
@@ -80,8 +90,10 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             },
             options: CarouselOptions(
+              viewportFraction: 1.0,
+              enableInfiniteScroll: false,
               autoPlay: true,
-              enlargeCenterPage: true,
+              enlargeCenterPage: false,
               height: MediaQuery.of(context).size.height,
             ),
           );
