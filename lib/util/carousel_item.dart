@@ -30,12 +30,12 @@ class CarouselItem extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: 10,
+          bottom: 20,
           left: 10.0,
           width: 300.0,
-          height: 50.0,
+          // height: 50.0,
           child: Container(
-            height: 50.0,
+            // height: 50.0,
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey, width: 2.0),
             ),

@@ -1,6 +1,6 @@
 // import 'dart:convert';
 
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, avoid_print, use_build_context_synchronously
 
 import 'package:app_1/pages/login.dart';
 import 'package:app_1/util/carousel_item.dart';
@@ -8,6 +8,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:app_1/util/consts.dart';
 import 'package:app_1/pages/register_page.dart';
+import 'package:app_1/pages/create_an_account_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -17,6 +18,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int currentIndex = 0;
+
   final List<Map<String, String>> carouselDetails = [
     {
       'carouselImage': 'pexels-cottonbro-3298637.jpg',
@@ -69,6 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     decoration: TextDecoration.none,
                     color: Colors.white,
                     fontFamily: poppins,
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.w900,
                   ),
                 ),
               ),
@@ -78,11 +83,11 @@ class _MyHomePageState extends State<MyHomePage> {
           final carouselItems = snapshot.data!;
           return CarouselSlider.builder(
             itemCount: carouselItems.length,
-            
             itemBuilder: (context, index, realIndex) {
-              if (index > carouselItems.length - 1) {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen() ));
-              }
+              // if (index > carouselItems.length - 1) {
+              //
+              //   print('hello World');
+              // }
               return CarouselItem(
                 carouselBigText: carouselItems[index]['carouselBigText'],
                 carouselImage: carouselItems[index]['carouselImage'],
@@ -95,6 +100,27 @@ class _MyHomePageState extends State<MyHomePage> {
               autoPlay: true,
               enlargeCenterPage: false,
               height: MediaQuery.of(context).size.height,
+              onPageChanged:
+                  (index, reason) => {
+                    setState(() {
+                      currentIndex = index;
+                      currentIndex == carouselItems.length - 1
+                          ? Future.delayed(
+                            Duration(seconds: 2),
+                            () => {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CreateAnAccountPage(),
+                                ),
+                              ),
+                            },
+                          )
+                          : true;
+                    }),
+
+                    // print(cr)
+                  },
             ),
           );
         },
