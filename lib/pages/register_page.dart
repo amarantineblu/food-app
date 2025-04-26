@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, unnecessary_null_comparison, avoid_print, avoid_unnecessary_containers, unused_local_variable
+// ignore_for_file: unused_import, unnecessary_null_comparison, avoid_print, avoid_unnecessary_containers, unused_local_variable, prefer_final_fields, unnecessary_new
 
 import 'package:app_1/pages/login.dart';
 import 'package:flutter/gestures.dart';
@@ -15,11 +15,13 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
-  String fullName = '';
-  String email = '';
-  String password = '';
+  final _fullName = new TextEditingController();
+  final _email = new TextEditingController();
+  final _password = new TextEditingController();
   // String selectedOption = '';
-  String phone = '';
+  final _phone = new TextEditingController();
+
+  dynamic jsonUser;
 
   @override
   Widget build(BuildContext context) {
@@ -44,60 +46,75 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: Column(
                     children: [
                       TextFormField(
+                        controller: _fullName,
                         decoration: InputDecoration(labelText: 'Full Name'),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please input a valid name';
+                          } else {
+                            return null;
                           }
-                          return null;
                         },
                         onSaved: (value) {
-                          fullName = value!;
+                          _fullName.text = value!;
                         },
                       ),
 
                       TextFormField(
+                        controller: _email,
                         decoration: InputDecoration(labelText: 'Email'),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please input a valid email';
+                          } else {
+                            return null;
                           }
-                          return null;
                         },
-                        onSaved: (value) {
-                          email = value!;
-                        },
+                        // onSaved: (value) {
+                        //   email = value!;
+                        // },
                       ),
                       TextFormField(
+                        controller: _phone,
                         decoration: InputDecoration(labelText: 'Phone'),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please input a valid number';
+                          } else {
+                            return null;
                           }
-                          return null;
                         },
-                        onSaved: (value) {
-                          phone = value!;
-                        },
+                        // onSaved: (value) {
+                        //   phone = value!;
+                        // },
                       ),
                       TextFormField(
+                        controller: _password,
                         decoration: InputDecoration(labelText: 'Password'),
                         obscureText: true,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please input a valid Password';
+                          } else {
+                            return null;
+                          }
+                        },
                         onSaved: (value) {
-                          password = value!;
+                          _password.text = value!;
                         },
                       ),
                       ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             _formKey.currentState!.save();
-                            var users = Users(
-                              fullName: fullName,
-                              email: email,
-                              phone: phone,
-                              password: password,
+                            Users users = Users(
+                              fullName: _fullName.text,
+                              email: _email.text,
+                              phone: _phone.text,
+                              password: _password.text,
                             );
-                            print(users);
+                            users.saveUser();
+                            // jsonUser = users.toJson();
                           }
                         },
                         child: Text('Register'),

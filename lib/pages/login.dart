@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, unnecessary_null_comparison, avoid_print
+// ignore_for_file: unused_import, unnecessary_null_comparison, avoid_print, avoid_unnecessary_containers
 
 import 'package:app_1/util/consts.dart';
 import 'package:flutter/gestures.dart';
