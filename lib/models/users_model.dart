@@ -34,16 +34,14 @@ class Users {
 
   saveUser() async {
     try {
-      var url = Uri.parse(
+      final url = Uri.parse(
         "http://192.168.188.76/dashboard/flutter_food_app/addData.php",
       );
-      var response = await http.post(
+      final response = await http.post(
         url,
         headers: {"Content-Type": 'application/json'},
         body: jsonEncode(toJson()),
       );
-
-      // print(response.statusCode);
 
       response.statusCode == 200
           ? print('Response: ${response.body}')

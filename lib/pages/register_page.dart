@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import, unnecessary_null_comparison, avoid_print, avoid_unnecessary_containers, unused_local_variable, prefer_final_fields, unnecessary_new
 
+import 'package:app_1/pages/dashboard.dart';
 import 'package:app_1/pages/login.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -114,6 +115,12 @@ class _RegisterPageState extends State<RegisterPage> {
                               password: _password.text,
                             );
                             users.saveUser();
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MyDashBoard(),
+                              ),
+                            );
                             // jsonUser = users.toJson();
                           }
                         },

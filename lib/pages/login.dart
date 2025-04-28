@@ -1,9 +1,15 @@
-// ignore_for_file: unused_import, unnecessary_null_comparison, avoid_print, avoid_unnecessary_containers
+// ignore_for_file: unused_import, unnecessary_null_comparison, avoid_print, avoid_unnecessary_containers, unused_local_variable, use_build_context_synchronously
+// ignore_for_file: depend_on_referenced_packages
 
+import 'package:app_1/pages/dashboard.dart';
 import 'package:app_1/util/consts.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:app_1/pages/register_page.dart';
+
+import 'dart:async';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,7 +22,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   String email = '';
   String password = '';
-  
 
   @override
   Widget build(BuildContext context) {
@@ -54,15 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           email = value!;
                         },
                       ),
-                      // DropdownButtonFormField<String>(
-                      //   value: selectedOption,
-                      //   items: ['+234', '+1', '+63'].map((option) {
-                      //     return DropdownMenuItem(child: Text(option));
-                      //   }),
-                      //   onChanged: (value) {
-                      //     selectedOption = value;
-                      //   },
-                      // ),
+
                       TextFormField(
                         decoration: InputDecoration(labelText: 'Password'),
                         obscureText: true,
@@ -74,7 +71,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             _formKey.currentState!.save();
-                            print({'email : $email', 'password: $password'});
+                            // print({'email : $email', 'password: $password'});
+                            loginUser(email, password, context);
                           }
                         },
                         child: Text('Login'),
@@ -131,5 +129,29 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+}
+
+loginUser(String email, String password, BuildContext context) async {
+  try {
+    // 192.168.142.57
+    final url = Uri.parse(
+      "http://192.168.188.76/dashboard/flutter_food_app/getData.php",
+    );
+    final response = await http.post(
+      url,
+      headers: {"Content-Type": 'application/json'},
+      body: jsonEncode({'email': email, 'password': password}),
+    );
+
+    // print(response.statusCode);
+    response.statusCode == 200
+        ? Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => MyDashBoard()),
+        )
+        : null;
+  } catch (e) {
+    print('Request Failed: $e');
   }
 }
