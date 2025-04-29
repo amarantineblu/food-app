@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     decoration: TextDecoration.none,
                     color: Colors.white,
                     fontFamily: poppins,
-                    fontSize: 30.0,
+                    fontSize: 40.0,
                     fontWeight: FontWeight.w900,
                   ),
                 ),

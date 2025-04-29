@@ -106,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           style: TextStyle(color: Colors.grey),
                         ),
                         TextSpan(
-                          text: 'Register',
+                          text: ' Register',
                           style: TextStyle(color: Colors.white),
                           recognizer:
                               TapGestureRecognizer()

@@ -23,7 +23,11 @@ class MyDashBoard extends StatelessWidget {
           maxRadius: 5,
           child: Icon(Icons.supervised_user_circle_rounded),
         ),
-        actions: [Icon(Icons.search_rounded)],
+        actions: [
+          GestureDetector(onTap: () {
+            
+          }, child: Icon(Icons.search_rounded)),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -76,7 +80,7 @@ class MyDashBoard extends StatelessWidget {
                 children: [
                   Text(
                     'Live Cooking',
-                    style: TextStyle(color: Colors.white, fontSize: 15.0),
+                    style: TextStyle(color: Colors.white, fontSize: 25.0),
                   ),
                   Opacity(
                     opacity: .5,
@@ -124,7 +128,7 @@ class MyDashBoard extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 60),
+                                SizedBox(height: 160),
                                 Text(
                                   'Delicious Food in every Bite',
                                   style: TextStyle(
