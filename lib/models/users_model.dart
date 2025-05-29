@@ -35,7 +35,7 @@ class Users {
   saveUser() async {
     try {
       final url = Uri.parse(
-        "http://192.168.188.76/dashboard/flutter_food_app/addData.php",
+        "http://192.168.188.76/dashboard/flutter_food_app/auth/register.php",
       );
       final response = await http.post(
         url,
@@ -46,8 +46,9 @@ class Users {
       response.statusCode == 200
           ? print('Response: ${response.body}')
           : print('Error: ${response.statusCode}');
-    } catch (e) {
+      } catch (e) {
       print('Request Failed: $e');
+      
     }
   }
 }

@@ -56,9 +56,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             return null;
                           }
                         },
-                        onSaved: (value) {
-                          _fullName.text = value!;
-                        },
+                        
                       ),
 
                       TextFormField(

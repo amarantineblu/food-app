@@ -1,5 +1,6 @@
 // ignore_for_file: unnecessary_const, must_be_immutable, sized_box_for_whitespace, body_might_complete_normally_nullable
 
+import 'package:app_1/pages/add_food_page.dart';
 import 'package:app_1/util/my_dashboard_small_card.dart';
 import 'package:flutter/material.dart';
 
@@ -24,9 +25,21 @@ class MyDashBoard extends StatelessWidget {
           child: Icon(Icons.supervised_user_circle_rounded),
         ),
         actions: [
-          GestureDetector(onTap: () {
-            
-          }, child: Icon(Icons.search_rounded)),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return AddFoodPage();
+                  },
+                ),
+              );
+            },
+            child: Icon(Icons.plus_one_rounded),
+          ),
+
+          GestureDetector(onTap: () {}, child: Icon(Icons.search_rounded)),
         ],
       ),
       body: Padding(
@@ -96,68 +109,6 @@ class MyDashBoard extends StatelessWidget {
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * .7,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(15.0),
-                              ),
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  'images/pexels-yente-van-eynde-1263034-2403391.jpg',
-                                ),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Opacity(
-                                  opacity: .5,
-                                  child: Card(
-                                    color: Colors.white,
-                                    child: Padding(
-                                      padding: EdgeInsets.all(5.0),
-                                      child: Text(
-                                        'bla bla bla ...',
-
-                                        style: TextStyle(fontSize: 15.0),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 160),
-                                Text(
-                                  'Delicious Food in every Bite',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    overflow: TextOverflow.fade,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Card(
-                                      shape: Border.all(
-                                        color: Colors.transparent,
-                                        width: 1,
-                                      ),
-                                    ),
-                                    Opacity(
-                                      opacity: .5,
-                                      child: Icon(Icons.add_box_rounded),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
@@ -530,6 +481,302 @@ class MyDashBoard extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  ' Top Chef',
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.grey[300],
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height * .35,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * .3,
+                          height: MediaQuery.of(context).size.height * .3,
+
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(15.0),
+                            ),
+                            image: DecorationImage(
+                              image: AssetImage(
+                                'images/pexels-yente-van-eynde-1263034-2403391.jpg',
+                              ),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Opacity(
+                                opacity: .5,
+                                child: Card(
+                                  color: Colors.white,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(5.0),
+                                    child: Text(
+                                      'bla bla bla ...',
+
+                                      style: TextStyle(fontSize: 15.0),
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Card(
+                                    shape: Border.all(
+                                      color: Colors.transparent,
+                                      width: 1,
+                                    ),
+                                  ),
+                                  Opacity(
+                                    opacity: .5,
+                                    child: Icon(Icons.add_box_rounded),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * .3,
+                          height: MediaQuery.of(context).size.height * .3,
+
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(15.0),
+                            ),
+                            image: DecorationImage(
+                              image: AssetImage(
+                                'images/pexels-yente-van-eynde-1263034-2403391.jpg',
+                              ),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Opacity(
+                                opacity: .5,
+                                child: Card(
+                                  color: Colors.white,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(5.0),
+                                    child: Text(
+                                      'bla bla bla ...',
+
+                                      style: TextStyle(fontSize: 15.0),
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Card(
+                                    shape: Border.all(
+                                      color: Colors.transparent,
+                                      width: 1,
+                                    ),
+                                  ),
+                                  Opacity(
+                                    opacity: .5,
+                                    child: Icon(Icons.add_box_rounded),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * .3,
+                          height: MediaQuery.of(context).size.height * .3,
+
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(15.0),
+                            ),
+                            image: DecorationImage(
+                              image: AssetImage(
+                                'images/pexels-yente-van-eynde-1263034-2403391.jpg',
+                              ),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Opacity(
+                                opacity: .5,
+                                child: Card(
+                                  color: Colors.white,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(5.0),
+                                    child: Text(
+                                      'bla bla bla ...',
+
+                                      style: TextStyle(fontSize: 15.0),
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Card(
+                                    shape: Border.all(
+                                      color: Colors.transparent,
+                                      width: 1,
+                                    ),
+                                  ),
+                                  Opacity(
+                                    opacity: .5,
+                                    child: Icon(Icons.add_box_rounded),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * .3,
+                          height: MediaQuery.of(context).size.height * .3,
+
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(15.0),
+                            ),
+                            image: DecorationImage(
+                              image: AssetImage(
+                                'images/pexels-yente-van-eynde-1263034-2403391.jpg',
+                              ),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Opacity(
+                                opacity: .5,
+                                child: Card(
+                                  color: Colors.white,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(5.0),
+                                    child: Text(
+                                      'bla bla bla ...',
+
+                                      style: TextStyle(fontSize: 15.0),
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Card(
+                                    shape: Border.all(
+                                      color: Colors.transparent,
+                                      width: 1,
+                                    ),
+                                  ),
+                                  Opacity(
+                                    opacity: .5,
+                                    child: Icon(Icons.add_box_rounded),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * .3,
+                          height: MediaQuery.of(context).size.height * .3,
+
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(15.0),
+                            ),
+                            image: DecorationImage(
+                              image: AssetImage(
+                                'images/pexels-yente-van-eynde-1263034-2403391.jpg',
+                              ),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Opacity(
+                                opacity: .5,
+                                child: Card(
+                                  color: Colors.white,
+                                  child: Padding(
+                                    padding: EdgeInsets.all(5.0),
+                                    child: Text(
+                                      'bla bla bla ...',
+
+                                      style: TextStyle(fontSize: 15.0),
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Card(
+                                    shape: Border.all(
+                                      color: Colors.transparent,
+                                      width: 1,
+                                    ),
+                                  ),
+                                  Opacity(
+                                    opacity: .5,
+                                    child: Icon(Icons.add_box_rounded),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ],
         ),

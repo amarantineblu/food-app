@@ -136,7 +136,7 @@ loginUser(String email, String password, BuildContext context) async {
   try {
     // 192.168.142.57
     final url = Uri.parse(
-      "http://192.168.188.76/dashboard/flutter_food_app/getData.php",
+      "http://192.168.188.76/dashboard/flutter_food_app/auth/login.php",
     );
     final response = await http.post(
       url,

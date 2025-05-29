@@ -1,6 +1,8 @@
 // ignore_for_file: unused_import
 
 import 'package:app_1/my_home_page.dart';
+import 'package:app_1/pages/add_food_page.dart';
+import 'package:app_1/pages/all_products.dart';
 import 'package:app_1/pages/dashboard.dart';
 import 'package:app_1/pages/forgot_password.dart';
 import 'package:app_1/util/consts.dart';
@@ -20,6 +22,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        // inputDecorationTheme: InputDecorationTheme(
+
+        // ),
         fontFamily: poppins,
         iconTheme: IconThemeData(size: 40, color: Colors.grey),
         scaffoldBackgroundColor: Colors.black,
@@ -36,6 +41,8 @@ class MyApp extends StatelessWidget {
         '/login-page': (context) => LoginScreen(),
         '/dashboard': (context) => MyDashBoard(),
         '/forgot-password': (context) => ForgotPassword(),
+        '/add-food': (context) => AddFoodPage(),
+        '/all-food': (context) => AllProducts(),
       },
     );
   }

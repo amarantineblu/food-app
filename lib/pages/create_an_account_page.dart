@@ -81,26 +81,35 @@ class CreateAnAccountPage extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        maximumSize: Size(200, 50),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          maximumSize: Size(200, 50),
+                        ),
+                        child: Text('Register With Email'),
                       ),
-                      child: Text('Register With Email'),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Expanded(
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: Icon(Icons.mark_email_read_sharp),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: Icon(Icons.mark_email_read_sharp),
+                            ),
                           ),
                         ),
                         Expanded(
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: Icon(Icons.apple_rounded),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              child: Icon(Icons.apple_rounded),
+                            ),
                           ),
                         ),
                       ],
@@ -110,7 +119,7 @@ class CreateAnAccountPage extends StatelessWidget {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: 'Already have an account?',
+                              text: 'Already have an account? ',
                               style: TextStyle(color: Colors.grey),
                             ),
                             TextSpan(

@@ -54,7 +54,7 @@ class CarouselItem extends StatelessWidget {
                     carouselBigText,
                     style: TextStyle(
                       decoration: TextDecoration.none,
-                      color: Colors.transparent,
+                      color: Colors.white,
                       fontSize: 25.0,
                       fontWeight: fontWeightBold700,
                     ),
@@ -63,7 +63,7 @@ class CarouselItem extends StatelessWidget {
                     carouselParagraph,
                     style: TextStyle(
                       decoration: TextDecoration.none,
-                      color: Colors.transparent,
+                      color: Colors.white,
                     ),
                   ),
                 ],

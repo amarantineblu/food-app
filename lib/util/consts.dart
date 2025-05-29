@@ -12,3 +12,7 @@ var fontSize30 = 30.0;
 //font weights
 
 var fontWeightBold700 = FontWeight.w700;
+
+//food categories list
+final List<String> foodCategories = ['Snacks', 'Drinks', 'Fast Food'];
+
