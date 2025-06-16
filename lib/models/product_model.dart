@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import, no_leading_underscores_for_local_identifiers, unnecessary_overrides
+// ignore_for_file: unused_import, no_leading_underscores_for_local_identifiers, unnecessary_overrides, empty_constructor_bodies
 
 import 'package:app_1/tools/model.dart';
 import 'package:flutter/material.dart';
@@ -22,4 +22,13 @@ class Product extends Model {
   set routingLocation(
     Future Function(dynamic routeLocation) _routingLocation,
   ) => super.routingLocation = _routingLocation;
+
+  factory Product.fromJson(Map<String, dynamic> json) {
+    return Product(
+      name: json['name'],
+      image: json['image'],
+      description: json['description'],
+      category: json['category'],
+    );
+  }
 }

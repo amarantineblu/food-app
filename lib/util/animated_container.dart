@@ -101,7 +101,10 @@ class _HoverDetailBoxState extends State<HoverDetailBox> {
                   ),
                   child:
                       image != null
-                          ? Image.memory(image as Uint8List)
+                          ? Image.memory(
+                            image as Uint8List,
+                            fit: BoxFit.fitHeight,
+                          )
                           : Icon(Icons.image_not_supported_outlined),
                 ),
 

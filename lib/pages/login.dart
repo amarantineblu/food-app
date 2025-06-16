@@ -11,6 +11,9 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:app_1/services/auth.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -19,6 +22,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   String email = '';
   String password = '';
@@ -76,6 +80,21 @@ class _LoginScreenState extends State<LoginScreen> {
                           }
                         },
                         child: Text('Login'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () async {
+                          // _formKey.currentState!.save();
+                          // // print({'email : $email', 'password: $password'});
+                          // loginUser(email, password, context);
+                          dynamic result = await _auth.signInAnonymously();
+                          if (result == null) {
+                            print('error signin in');
+                          } else {
+                            print('signed in');
+                            print(result.uid);
+                          }
+                        },
+                        child: Text('Login Anonymously'),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

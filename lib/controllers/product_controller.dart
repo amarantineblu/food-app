@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, unused_import, avoid_print
+// ignore_for_file: unused_local_variable, unused_import, avoid_print, unnecessary_null_comparison
 
 import 'dart:convert';
 
@@ -27,22 +27,42 @@ class ProductController {
     product.save();
   }
 
-  Future<List<dynamic>> allProducts() async {
+  Future<Map<String, List<Map<String, dynamic>>>> allProducts() async {
     final url = Uri.parse(
-      "http://192.168.156.248/dashboard/flutter_food_app/products/allProducts.php",
+      "http://localhost/dashboard/flutter_food_app/products/allProducts.php",
     );
     try {
       final response = await http.get(url);
+      List<dynamic> responseData = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        final List data = jsonDecode(response.body);
-        // print(data);
-        return data;
+        Map<String, List<Map<String, dynamic>>> grouped = {};
+        for (var product in responseData) {
+          if (product is! Map<String, dynamic>) {
+            // print('Skipping non-map item: $product');
+            continue;
+          }
+          String category = product['category'];
+          if (category == null) {
+            print('Product missing category : $product');
+            continue;
+          }
+          grouped.putIfAbsent(category, () => []);
+          grouped[category]!.add(Map<String, dynamic>.from(product));
+        }
+        // grouped.forEach((category, products) {
+        //   print('Category : $category');
+        //   for (var p in products) {
+        //     print(' - ${p['name']}');
+        //   }
+        // });
+
+        return grouped;
       } else {
-        throw Exception('failed to load data');
+        throw Exception('failed to load data : ${response.statusCode}');
       }
     } catch (e) {
       print('Request Failed: $e');
+      throw Exception('failed to load data');
     }
-    throw Exception('failed to load data');
   }
 }
